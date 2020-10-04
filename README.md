@@ -31,7 +31,7 @@ The plugin will automatically use any of the following configuration variables, 
 
 * `title` or `name` - The title of the site, e.g., "My awesome site"
 * `description` - A longer description of what your site is about, e.g., "Where I blog about Jekyll and other awesome things"
-* `url` - The URL to your site, e.g., `http://example.com`. If none is provided, the plugin will try to use `site.github.url`.
+* `url` - The URL to your site, e.g., `https://example.com`. If none is provided, the plugin will try to use `site.github.url`.
 * `author` - Global author information (see below)
 
 ### Already have a feed path?
@@ -134,7 +134,7 @@ Jekyll's `smartify` filter uses [kramdown](https://kramdown.gettalong.org/option
 
 ### Custom styling
 
-Want to style what your feed looks like in the browser? Simply add an XSLT at `/feed.xslt.xml` and Jekyll Feed will link to the stylesheet.
+Want to style what your feed looks like in the browser? When a XSLT Styleheet file named `feed.xslt.xml` exists at the root of your repository, a link to this stylesheet is added to the generated feed.
 
 ## Why Atom, and not RSS?
 
@@ -149,6 +149,15 @@ feed:
   categories:
     - news
     - updates
+```
+
+## Posts limit
+
+By default the plugin limits the number of posts in the feed to 10. Simply define a new limit in your config:
+
+```yml
+feed:
+  posts_limit: 20
 ```
 
 ## Collections
@@ -181,6 +190,59 @@ feed:
         - news
         - updates
 ```
+
+## Excerpt Only flag
+
+Optional flag `excerpt_only` allows you to exclude post content from the Atom feed. Default value is `false` for backward compatibility.
+
+When in `config.yml` is `true` than all posts in feed will be without `<content>` tags.
+
+```yml
+feed:
+  excerpt_only: true
+```
+
+The same flag can be used directly in post file. It will be disable `<content>` tag for selected post.
+Settings in post file has higher priority than in config file.
+
+## Tags
+
+To automatically generate feeds for each tag you apply to your posts you can add a tags setting to your config:
+
+```yml
+feed:
+  tags: true
+```
+
+If there are tags you don't want included in this auto generation you can exclude them
+
+```yml
+feed:
+  tags:
+    except:
+      - tag-to-exclude
+      - another-tag
+```
+
+If you wish to change the location of these auto generated feeds (`/feed/by_tag/<TAG>.xml` by default) you can provide an alternative folder for them to live in.
+
+```yml
+feed:
+  tags:
+    path: "alternative/path/for/tags/feeds/"
+```
+
+If you only want to generate feeds for a few tags you can also set this.
+
+```yml
+feed:
+  tags:
+    only:
+      - tag-to-include
+      - another-tag
+```
+
+Note that if you include a tag that is excluded a feed will not be generated for it.
 
 ## Contributing
 

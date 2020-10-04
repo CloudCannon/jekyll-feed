@@ -1,6 +1,47 @@
-## 0.12.1 / 2019-03-23
+## HEAD
 
-  * Release: v0.12.0 (#271)
+## 0.15.1 / 2020-10-04
+
+### Bug Fixes
+
+  * MetaTag: when encoding for XML special characters, handle non-string objects (#326)
+
+## 0.15.0 / 2020-07-10
+
+### Minor Enhancements
+
+  * Add support for drafts (#316)
+
+## 0.14.0 / 2020-06-24
+
+### Minor Enhancements
+
+  * add support for categories (#153) (#233)
+  * add support for tags (#264)
+  * Make posts limit configurable (#314)
+  * XML escape the title field of feed_meta (#306)
+
+### Bug Fixes
+
+  * Fix feed link when post title contains HTML (#305)
+
+### Development Fixes
+
+  * Use Dir to list source files (#309)
+  * Require Ruby &gt;=2.4.0 (#307)
+
+## 0.13.0 / 2019-11-13
+
+### Minor Enhancements
+
+  * Excerpt only flag (#287)
+  * Add media:content tag (#290)
+
+### Development Fixes
+
+  * test: use categories in post (#249)
+
+## 0.12.1 / 2019-03-23
 
 ### Bug Fixes
 
